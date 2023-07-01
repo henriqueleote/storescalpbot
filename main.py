@@ -11,7 +11,7 @@ options.add_argument("--disable-dev-shm-usage")
 driver = Chrome(options=options)
 
 # Set the URL to retrieve the HTML source code
-url = "https://www.radiopopular.pt/categoria/computadores-portateis/"
+url = "https://talk-point.de/search?type=article%2Cpage%2Cproduct&q=&sort=created-descending"
 # Open the URL in Chrome
 driver.get(url)
 
@@ -43,7 +43,7 @@ parent_elements = soup.find_all(
 filtered_parent_elements = []
 
 for parent in parent_elements:
-    if parent.find('a') and parent.find('img') and "benefits" not in str(parent) and "loyalty" not in str(parent) and "<nav" not in str(parent) and "category" not in str(parent):
+    if parent.find('a') and parent.find('img') and 'product' in str(parent):
         filtered_parent_elements.append(parent)
 
 # Filter parent elements based on the presence of <a> tag among their children
